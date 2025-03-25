@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Results - Image Enhancer{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="results-container">
+        <h1 class="section-title">Enhancement Results</h1>
+        <p class="section-subtitle">See the before and after comparison of your image.</p>
+        
+        <div class="image-comparison">
+            <div class="image-card">
+                <h3>Original Image</h3>
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename='uploads/' + original_image) }}" alt="Original Image" class="result-image">
+                </div>
+            </div>
+            
+            <div class="image-card">
+                <h3>Enhanced Image</h3>
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename='enhanced/' + enhanced_image) }}" alt="Enhanced Image" class="result-image">
+                </div>
+            </div>
+        </div>
+        
+        {% if caption %}
+        <div class="caption-container">
+            <h3 class="caption-title">Image Caption</h3>
+            <p class="caption-text">{{ caption }}</p>
+        </div>
+        {% endif %}
+        
+        <div class="action-buttons">
+            <a href="{{ url_for('download', filename=enhanced_image) }}" class="btn" download>Download Enhanced Image</a>
+            <a href="{{ url_for('history') }}" class="btn btn-secondary">View History</a>
+            <a href="{{ url_for('upload_page') }}" class="btn btn-secondary">Enhance Another Image</a>
+            <a href="{{ url_for('camera_page') }}" class="btn btn-secondary">Take Another Photo</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 
