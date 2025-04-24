@@ -9,3 +9,4 @@ torchvision==0.15.1
 flask-wtf==1.0.1
 flask-login==0.6.0
 werkzeug==2.0.3 
+gunicorn
